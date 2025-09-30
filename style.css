@@ -89,24 +89,6 @@ h2 {
 }
 
 /* --- Candidate Sections --- */
-.candidate-links {
-    margin-bottom: 1rem;
-}
-
-.pdf-button {
-    display: inline-block;
-    background: #007bff;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-right: 0.5rem;
-}
-
-.pdf-button:hover {
-    background: #0056b3;
-}
-
 .candidate-info {
     display: flex;
     flex-wrap: wrap;
@@ -134,42 +116,6 @@ h2 {
     color: #003366;
 }
 
-.video-section {
-    margin-top: 1rem;
-    border-top: 1px solid #eee;
-    padding-top: 1rem;
-}
-
-.video-section h4 {
-    color: #003366;
-    margin-top: 0;
-}
-
-/* --- Debate Section --- */
-#debates {
-    background: #fff;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    border-radius: 5px;
-}
-
-#debates h2 {
-    color: #003366;
-    border-bottom: 2px solid #003366;
-    padding-bottom: 0.5rem;
-}
-
-.video-list a {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.video-list a:hover {
-    text-decoration: underline;
-}
-
 /* --- Matcher Page --- */
 #questionnaire {
     background: #fff;
@@ -190,10 +136,6 @@ h2 {
     display: block;
     margin-bottom: 0.5rem;
     cursor: pointer;
-}
-
-.answers label {
-    margin-left: 1rem;
 }
 
 #submit-matcher {

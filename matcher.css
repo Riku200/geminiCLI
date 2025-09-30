@@ -1,0 +1,222 @@
+/* --- Base Styles --- */
+body {
+    font-family: 'Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 20px;
+    background: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    width: 100%;
+    max-width: 700px;
+}
+
+#diagnostic-container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+h1, h2 {
+    color: #003366;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    background: #003366;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background: #0055a5;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #6c757d;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.result-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* --- Question Screen --- */
+#question-content {
+    text-align: left;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#question-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0055a5;
+}
+
+#question-scenario {
+    background-color: #f8f9fa;
+    border-left: 4px solid #0055a5;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.choices-container .btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1rem;
+    background: #e9ecef;
+    color: #333;
+    font-weight: normal;
+}
+
+.choices-container .btn:hover {
+    background: #d4dae0;
+    transform: none;
+}
+
+.choices-container .btn .choice-label {
+    font-weight: bold;
+    margin-right: 0.5em;
+    color: #003366;
+}
+
+/* --- Progress Bar --- */
+#progress-bar-container {
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 10px;
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* --- Result Screen --- */
+#result-bars {
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.result-item {
+    margin-bottom: 1.5rem;
+    animation: slideInUp 0.5s ease-out;
+}
+
+.result-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.candidate-name {
+    font-size: 1.2rem;
+}
+
+.match-percentage {
+    font-size: 1.2rem;
+    color: #003366;
+}
+
+.bar-container {
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 5px;
+}
+
+.bar {
+    height: 24px;
+    background-color: #ffc107; /* Accent color */
+    width: 0%; /* Set by JS */
+    border-radius: 5px;
+    transition: width 1s ease-out;
+    text-align: right;
+    line-height: 24px;
+    color: white;
+    font-weight: bold;
+    padding-right: 8px;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    #diagnostic-container {
+        padding: 1.5rem;
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.6rem; }
+    .result-buttons {
+        flex-direction: column;
+    }
+}

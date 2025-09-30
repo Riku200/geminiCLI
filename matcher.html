@@ -3,25 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>候補者マッチング - 自民党総裁選2025</title>
-    <link rel="stylesheet" href="style.css">
+    <title>政策シナリオ診断</title>
+    <link rel="stylesheet" href="matcher.css">
 </head>
 <body>
-    <header>
-        <h1>候補者マッチング</h1>
-        <p>各政策テーマについてあなたの考えに近いものを選択してください。</p>
-    </header>
     <main>
-        <div id="questionnaire">
-            <!-- Questions will be inserted here by JavaScript -->
-        </div>
-        <div id="results" style="display: none;">
-            <!-- Results will be inserted here by JavaScript -->
+        <div id="diagnostic-container">
+            <!-- Start Screen -->
+            <div id="start-screen">
+                <h1>政策シナリオ診断</h1>
+                <p>５つのシナリオへの回答から、あなたの考えに近い総裁候補者がわかります。</p>
+                <button id="start-btn" class="btn">診断を始める</button>
+            </div>
+
+            <!-- Question Screen -->
+            <div id="question-screen" class="hidden">
+                <div id="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div id="question-content">
+                    <p id="question-number"></p>
+                    <p id="question-scenario"></p>
+                    <div id="question-choices" class="choices-container">
+                        <!-- Choices will be inserted by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result Screen -->
+            <div id="result-screen" class="hidden">
+                <h2>診断結果</h2>
+                <p>あなたの考えに最も近い候補者は...</p>
+                <div id="result-bars">
+                    <!-- Result bars will be inserted by JS -->
+                </div>
+                <div class="result-buttons">
+                    <button id="retry-btn" class="btn">もう一度診断する</button>
+                    <a href="index.html" class="btn btn-secondary">トップページに戻る</a>
+                </div>
+            </div>
         </div>
     </main>
-    <footer>
-        <p>&copy; 2025 LDP Presidential Election Information</p>
-    </footer>
     <script src="matcher.js"></script>
 </body>
 </html>
