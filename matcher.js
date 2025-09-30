@@ -52,6 +52,49 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "高市 早苗", profile: ["A", "A", "B", "B", "B"] }
     ];
 
+    const explanations = [
+        { // シナリオ1
+            title: "シナリオ 1：長期化する物価高と経済の停滞",
+            choices: {
+                A: "【解説】これは、まず国民生活の緊急支援を最優先し、財政出動によって経済を力強く牽引すべきだという考え方です。高市氏や小林氏の積極財政を重視する姿勢に近いです。",
+                B: "【解説】これは、目先の給付金よりも、企業の力を高めることで持続的な賃上げを実現すべきだという考え方です。茂木氏や林氏が掲げる、成長と分配の好循環を重視する姿勢に近いです。",
+                C: "【解説】これは、将来世代への負担を考慮し、支援を若者や現役世代に集中させて未来への投資を優先すべきだという考え方です。小林氏や小泉氏の世代交代や未来への投資を重視する姿勢に近いです。"
+            }
+        },
+        { // シナリオ2
+            title: "シナリオ 2：緊迫する国際情勢と防衛",
+            choices: {
+                A: "【解説】これは、対話よりもまず「力による平和」を追求し、独自の防衛力強化を急ぐべきだという考え方です。高市氏や小林氏の、防衛力を抜本的に強化し毅然と対応すべきという姿勢に近いです。",
+                B: "【解説】これは、日本の独力だけでなく同盟国との連携を最大限に活用し、外交努力で事態を打開すべきだという考え方です。林氏や茂木氏の、国際協調を重視する現実的なアプローチに近いです。",
+                C: "【解説】これは、防衛力強化と同時に、その根幹となる憲法の議論を加速させ、国家のあり方から見直すべきだという考え方です。小泉氏や小林氏が訴える、憲法改正議論の加速という姿勢に近いです。"
+            }
+        },
+        { // シナリオ3
+            title: "シナリオ 3：加速する人口減少と地方の衰退",
+            choices: {
+                A: "【解説】これは、従来型の公共事業に頼るのではなく、デジタル技術や新しい産業によって地方創生を目指すべきだという考え方です。小泉氏や小林氏の、スタートアップ支援などを重視する姿勢に近いです。",
+                B: "【解説】これは、全ての地域を救うのではなく、防災やインフラ維持といった現実的な課題から着手し、拠点を絞って投資すべきだという考え方です。林氏、茂木氏、高市氏の国土強靭化などを重視する姿勢に近いです。",
+                C: "【解説】これは、地方の問題を国全体の人口問題と捉え、まずは次元の違う子育て支援に集中投資すべきだという考え方です。少子化対策を最重要視する多くの候補者に共通する視点です。"
+            }
+        },
+        { // シナリオ4
+            title: "シナリオ 4：国会運営と政治改革",
+            choices: {
+                A: "【解説】これは、多数の力で押し切るのではなく、野党との対話を通じて幅広い合意形成を目指すべきだという融和的な政治姿勢です。特に小泉氏や林氏が重視する考え方に近いです。",
+                B: "【解説】これは、イデオロギーの異なる相手と議論するよりも、政策が近い勢力と新たな協力関係を築くべきだという現実的な政界再編を視野に入れた考え方です。茂木氏や高市氏の姿勢に近いです。",
+                C: "【解説】これは、議会内の交渉が行き詰まった際、国民に直接訴えかけて世論を動かすことで突破しようとする、強いリーダーシップを志向する考え方です。小林氏の姿勢などに近い部分があります。"
+            }
+        },
+        { // シナリオ5
+            title: "シナリオ 5：未来への投資と財源の確保",
+            choices: {
+                A: "【解説】これは、増税や新たな借金を避けるため、まずは徹底した行政改革で財源を生み出すべきだという財政規律を重視する考え方です。林氏、小泉氏、茂木氏の姿勢に近いです。",
+                B: "【解説】これは、未来への投資は将来世代への貢献であり、そのための借金（国債発行）はためらうべきではないという積極財政の考え方です。高市氏や小林氏の姿勢に近いです。",
+                C: "【解説】これは、財政規律を守りつつ、受益者や負担能力のある層に新たな税負担を求めることで財源を確保すべきだという、分配をより重視した考え方です。"
+            }
+        }
+    ];
+
     // --- STATE --- //
     let currentQuestionIndex = 0;
     let userAnswers = [];
@@ -70,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const questionChoices = document.getElementById('question-choices');
     const resultBars = document.getElementById('result-bars');
     const progressBar = document.getElementById('progress-bar');
+    const detailedResultsContainer = document.getElementById('detailed-results-container');
+    const detailedResults = document.getElementById('detailed-results');
 
     // --- FUNCTIONS --- //
 
@@ -78,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         userAnswers = [];
         startScreen.classList.add('hidden');
         resultScreen.classList.add('hidden');
+        detailedResultsContainer.classList.add('hidden'); // Hide details on start
         questionScreen.classList.remove('hidden');
         displayQuestion();
     }
@@ -86,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const question = questions[currentQuestionIndex];
         questionContent.classList.remove('fade-out');
 
-        // Update progress bar
         const progress = ((currentQuestionIndex) / questions.length) * 100;
         progressBar.style.width = `${progress}%`;
 
@@ -114,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 showResults();
             }
-        }, 300); // Wait for fade-out animation
+        }, 300);
     }
 
     function showResults() {
@@ -122,7 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
         questionScreen.classList.add('hidden');
         resultScreen.classList.remove('hidden');
         resultBars.innerHTML = '';
+        detailedResults.innerHTML = ''; // Clear previous details
 
+        // Calculate and display overall match bars
         const results = candidates.map(candidate => {
             const score = candidate.profile.reduce((acc, val, index) => {
                 return acc + (val === userAnswers[index] ? 1 : 0);
@@ -131,13 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return { name: candidate.name, percentage: matchPercentage };
         });
 
-        // Sort by percentage descending
         results.sort((a, b) => b.percentage - a.percentage);
 
         results.forEach(result => {
             const resultItem = document.createElement('div');
             resultItem.className = 'result-item';
-
             resultItem.innerHTML = `
                 <div class="result-label">
                     <span class="candidate-name">${result.name}</span>
@@ -148,17 +193,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             resultBars.appendChild(resultItem);
-            
-            // Animate bar width
             setTimeout(() => {
-                const bar = resultItem.querySelector('.bar');
-                bar.style.width = `${result.percentage}%`;
-            }, 100); // Small delay to ensure animation triggers
+                resultItem.querySelector('.bar').style.width = `${result.percentage}%`;
+            }, 100);
         });
+
+        // Generate and display detailed explanations
+        explanations.forEach((explanation, index) => {
+            const userAnswer = userAnswers[index];
+            const explanationItem = document.createElement('div');
+            explanationItem.className = 'explanation-item';
+
+            const question = questions[index]; // Get the corresponding question object
+            let choicesHtml = '';
+            for (const choice in explanation.choices) {
+                const isSelected = choice === userAnswer;
+                const originalChoice = question.choices.find(c => c.value === choice);
+
+                choicesHtml += `
+                    <div class="choice-explanation ${isSelected ? 'selected' : ''}">
+                        <p class="choice-text"><strong>選択肢 ${choice}:</strong> ${originalChoice.text}</p>
+                        <p class="explanation-text">${explanation.choices[choice]}</p>
+                    </div>
+                `;
+            }
+
+            explanationItem.innerHTML = `
+                <h4>${explanation.title}</h4>
+                <p class="user-answer">あなたが選んだ回答： ${userAnswer}</p>
+                ${choicesHtml}
+            `;
+            detailedResults.appendChild(explanationItem);
+        });
+        
+        detailedResultsContainer.classList.remove('hidden');
     }
 
     function retryDiagnostic() {
         resultScreen.classList.add('hidden');
+        detailedResultsContainer.classList.add('hidden'); // Also hide details on retry
         startScreen.classList.remove('hidden');
     }
 

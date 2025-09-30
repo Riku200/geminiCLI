@@ -186,6 +186,80 @@ p {
     padding-right: 8px;
 }
 
+/* --- Detailed Results Section --- */
+#detailed-results-container {
+    margin-top: 3rem;
+    text-align: left;
+    border-top: 1px solid #dee2e6;
+    padding-top: 2rem;
+}
+
+.details-title {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.explanation-item {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.explanation-item h4 {
+    color: #0055a5;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.user-answer {
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 1rem !important; /* Override default p margin */
+    background-color: #e6f0ff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.choice-explanation {
+    margin-bottom: 0.75rem;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 0.95rem;
+}
+
+.choice-explanation p {
+    margin: 0;
+}
+
+.choice-text {
+    margin-bottom: 0.75rem !important;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.choice-text strong {
+    color: #495057;
+}
+
+.explanation-text {
+    color: #212529;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.choice-explanation.selected {
+    background-color: #e6f0ff;
+    border: 1px solid #b8d6fb;
+}
+
+
 /* --- Animations --- */
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -219,4 +293,6 @@ p {
     .result-buttons {
         flex-direction: column;
     }
+    .details-title { font-size: 1.3rem; }
+    .explanation-item { padding: 1rem; }
 }
