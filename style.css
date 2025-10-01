@@ -225,7 +225,7 @@ footer {
 
 #debate-videos .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) */
+    padding-bottom: 177.78%; /* 9:16 Aspect Ratio (16 / 9 = 1.7778) */
     height: 0;
     overflow: hidden;
     flex: 1 1 30%;
